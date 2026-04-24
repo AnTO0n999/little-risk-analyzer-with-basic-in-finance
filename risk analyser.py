@@ -18,7 +18,9 @@ class RiskAnalyzer:
         delta_price = (lxt_price - prv_price) / prv_price
         print("\nLast Price, yesterday price and delta price")
         for ticker in self.ticker:
-            print(f"{ticker}: last {round(lxt_price[ticker],2)}$, prev {round(prv_price[ticker],2)}$ and {round(delta_price[ticker],2)} %")
+            print(f"{ticker}: last {round(lxt_price[ticker],2)}$,"
+                  f" prev {round(prv_price[ticker],2)}$ "
+                  f"and {round(delta_price[ticker],2)} %")
 
     def daily_vol(self):
         self.vol = self.returns.std() * np.sqrt(252)
@@ -33,7 +35,7 @@ class RiskAnalyzer:
         print(f"\nrisk free rate: {round(risk_free_rate * 100, 2)}%")
         sharpe_ratio = (annual_returns - risk_free_rate) / self.vol
         for ticker in self.ticker:
-            print(f"share ratio of {ticker}: {round(sharpe_ratio[ticker],2)}")
+            print(f"sharpe ratio of {ticker}: {round(sharpe_ratio[ticker],2)}")
         avg_sharpe_ratio = sum(sharpe_ratio) / len(self.ticker)
         print(f"Average Sharpe Ratio of my portfolio: {round(avg_sharpe_ratio,2)}")
 
